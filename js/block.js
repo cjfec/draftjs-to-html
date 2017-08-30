@@ -428,6 +428,7 @@ export function trimTrailingZeros(sectionText: string): string {
 function getStyleTagSectionMarkup(styleSection: Object): string {
   const { styles, text } = styleSection;
   let content = getSectionText(text);
+  content = trimZeros(content);
   forEach(styles, (style, value) => {
     content = addInlineStyleMarkup(style, content, value);
   });
@@ -498,7 +499,6 @@ export function getBlockInnerMarkup(
   sections.forEach((section, index) => {
     let sectionText =
       getSectionMarkup(block, entityMap, section, customEntityTransform);
-    sectionText = trimZeros(sectionText);
     // if (index === 0) {
     //   sectionText = trimLeadingZeros(sectionText);
     // }
