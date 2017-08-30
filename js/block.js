@@ -546,6 +546,5 @@ export function getBlockMarkup(
       blockHtml.push(`</${blockTag}>`);
     }
   }
-  blockHtml.push('\n');
   return blockHtml.join('');
 }
