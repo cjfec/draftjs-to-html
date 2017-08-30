@@ -375,6 +375,17 @@ function getInlineStyleSections(
 }
 
 /**
+* Replace all blank spaces by &nbsp;
+*/
+export function trimZeros(sectionText: string): string {
+  if (sectionText) {
+    let replacedText = sectionText;
+    return replacedText.replace(/ /g, '&nbsp;');
+  }
+  return sectionText;
+}
+
+/**
 * Replace leading blank spaces by &nbsp;
 */
 export function trimLeadingZeros(sectionText: string): string {
@@ -487,12 +498,13 @@ export function getBlockInnerMarkup(
   sections.forEach((section, index) => {
     let sectionText =
       getSectionMarkup(block, entityMap, section, customEntityTransform);
-    if (index === 0) {
-      sectionText = trimLeadingZeros(sectionText);
-    }
-    if (index === sections.length - 1) {
-      sectionText = trimTrailingZeros(sectionText);
-    }
+    sectionText = trimZeros(sectionText);
+    // if (index === 0) {
+    //   sectionText = trimLeadingZeros(sectionText);
+    // }
+    // if (index === sections.length - 1) {
+    //   sectionText = trimTrailingZeros(sectionText);
+    // }
     blockMarkup.push(sectionText);
   });
   return blockMarkup.join('');
