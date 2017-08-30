@@ -507,7 +507,6 @@ export function getBlockInnerMarkup(
     // }
     blockMarkup.push(sectionText);
   });
-  blockMarkup.length || (blockMarkup.push('<br/>'));
   return blockMarkup.join('');
 }
 
@@ -546,5 +545,6 @@ export function getBlockMarkup(
       blockHtml.push(`</${blockTag}>`);
     }
   }
+  blockHtml.push('\n');
   return blockHtml.join('');
 }
