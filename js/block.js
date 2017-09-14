@@ -301,7 +301,7 @@ export function addStylePropertyMarkup(styles: Object, text: string): string {
       styleString += `font-size: ${styles.FONTSIZE}px;`;
     }
     if (styles.FONTFAMILY) {
-      styleString += `font-family: ${styles.FONTFAMILY};`;
+      styleString += `font-family: ${styles.FONTFAMILY.replace(/"/g, '\'')};`;
     }
     styleString += '"';
     return `<span ${styleString}>${text}</span>`;
